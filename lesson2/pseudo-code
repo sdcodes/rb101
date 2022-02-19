@@ -1,0 +1,90 @@
+1.  a method that returns the sum of two integers 
+
+START
+#given two integers
+
+first integers is added to second integer
+
+sum of both integers is given
+
+END 
+
+------ 
+
+2. a method that takes an array of strings, 
+   and returns a string that is all those strings concatenated together.
+
+START 
+#array of strings is given
+
+separate strings inside of array are squished together
+squished new string inside of an array taken out of the array
+
+PRINT new STRING 
+END 
+
+-----
+
+3. a method that takes an array of integers, and returns
+  a new array with every other element from the original array, 
+  starting with the first element
+
+START 
+#given an array of integers
+
+iterate through each intger one by one
+keeps only every other integer (starting with saving the first integer)
+the kept integers are put in a new array
+name the new array
+
+PRINT new array. 
+
+--------- 
+
+4. a method that determines the index of the 3rd occurrence of a 
+given character in a string. For instance, if the given character 
+is 'x' and the string is 'axbxcdxex', the method should 
+return 6 (the index of the 3rd 'x').
+If the given character does not occur at least 3 times, return nil. 
+
+START
+#given a string
+#given a character
+iterate through every character of string 
+counts each time given character shows up
+on third time given character shows up
+PUTS place third time is located 
+IF character shows up less than three times
+PUTS nil
+
+END 
+-----
+
+a method that takes two arrays of numbers and 
+returns the result of merging the arrays. The elements of the first 
+array should become the elements at the even indexes of the returned array,
+while the elements of the second array should become the elements 
+at the odd indexes
+
+START 
+#given two arrays of numbers
+a new array is made 
+numbers in first array given takes even-numbered seats(indexes) of new array
+numbers in second array given takes odd-numbered seats(indexes) of new array
+PUTS new array
+
+END 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
