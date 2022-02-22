@@ -3,8 +3,16 @@ def prompt(message)
 end
 
 def valid_number?(num)
-  num.to_i != 0
+  num.to_i.to_s == num
 end
+
+def float?(floatnum)
+  floatnum == floatnum.to_f.to_s
+end
+
+def number?(n)
+  n.integer? || n.float?
+end 
 
 def operation_to_message(op)
   case op
@@ -52,7 +60,6 @@ num2 = ""
   loop do
     prompt "What is the second number?"
     num2 = gets.chomp
-    
     if valid_number?(num2)
       break
     else 
@@ -79,7 +86,7 @@ num2 = ""
     else
       prompt "Must choose 1, 2, 3, 4."
     end
-  end
+  end 
   
   prompt "#{operation_to_message(operator)} the two strings..."
   
@@ -89,9 +96,15 @@ num2 = ""
     result = num1.to_i - num2.to_i
   elsif operator == "3"
     result = num1.to_i * num2.to_i
-  else
-    result = num1.to_f / num2.to_f
-  end
+  elsif operator == "4"
+    if num2 != "0"
+      result = num1.to_f / num2.to_f
+    else 
+      puts "Can't divide by 0"
+      next
+    end
+    end
+  
   
   prompt "The result is #{result}."
   
