@@ -1,0 +1,15 @@
+welcome: "Welcome to Calculator! Enter your name:"
+valid_name: "Make sure to enter a valid name."
+not_valid_num: "Hmm...that doesn't look like a valid number."
+first_num_request: "Please provide a first number."
+second_num_request: "Please provide a second number."
+operator_prompt:
+    What operation would you like to perform?
+      1) add
+      2) subtract
+      3) multiply
+      4) divide
+choose_correct_operator: "Must choose 1, 2, 3, 4."
+zero_divide_error: "Can't divide by 0"
+playagain?: "Do you want to perform another calculation? (Y to calculate again)."
+finalmessage: "Do you want to perform another calculation? (Y to calculate again)."

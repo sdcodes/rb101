@@ -1,3 +1,6 @@
+require 'yaml'
+MESSAGES = YAML.load_file('calculator_message.yml')
+
 def prompt(message)
   puts "=> #{message}"
 end
@@ -27,14 +30,15 @@ def operation_to_message(op)
   end
 end
 
-prompt "Welcome to Calculator! Enter your name."
+prompt MESSAGES['welcome']
+
 name = ""
 
 loop do
   name = gets.chomp
   
   if name.empty?
-    prompt "make sure to use a valid name."
+    prompt MESSAGES['valid_name']
   else
     break
   end
@@ -48,35 +52,27 @@ num1 = ""
 num2 = ""
   
   loop do
-    prompt "Please provide a first number."
+    prompt MESSAGES['first_num_request']
     num1 = gets.chomp
   if valid_number?(num1)
     break
   else
-    prompt "hmm...that doesn't look like a valid number."
+    prompt MESSAGES['not_valid_num']
   end 
   end 
   
   loop do
-    prompt "What is the second number?"
+    prompt MESSAGES['second_num_request']
     num2 = gets.chomp
     if valid_number?(num2)
       break
     else 
-      prompt "Hmm...that doesn't look like a valid number."
+      prompt MESSAGES['not_valid_num']
     end
   end
   
   
-  operator_prompt = <<-MSG
-    What operation would you like to perform?
-      1) add
-      2) subtract
-      3) multiply
-      4) divide
-    MSG
-  
-  prompt operator_prompt
+ prompt MESSAGES['operator_prompt']
   
   operator = ""
   loop do 
@@ -84,7 +80,7 @@ num2 = ""
     if %w(1 2 3 4).include?(operator)
       break
     else
-      prompt "Must choose 1, 2, 3, 4."
+      prompt MESSAGES['choose_correct_operator']
     end
   end 
   
@@ -100,7 +96,7 @@ num2 = ""
     if num2 != "0"
       result = num1.to_f / num2.to_f
     else 
-      puts "Can't divide by 0"
+      prompt MESSAGES['zero_divide_error']
       next
     end
     end
@@ -108,23 +104,9 @@ num2 = ""
   
   prompt "The result is #{result}."
   
-  prompt "Do you want to perform another calculation? (Y to calculate again)."
+  prompt MESSAGES['playagain?']
     answer = gets.chomp
     break unless answer.downcase.start_with?("y")
   end
   
-  prompt "thank you for using the calculator! "
-
-=begin
-
-result2 = case operator
-when "1"
-  num1.to_i + num2.to_i
-when "2"
-  num1.to_i - num2.to_i
-when "3" 
-  num1.to_i * num2.to_i
-when "4"
-  num1.to_f / num2.to_f
-  
-=end 
+  prompt MESSAGES['finalmessage']
