@@ -8,12 +8,14 @@ produce = {
 def select_fruit(type_of)
   onlyfruits = {}
   counter = 0
+  fruit_keys = type_of.keys
     
   loop do
-    current_pair = type_of[counter] 
+    current_key = fruit_keys[counter]
+    current_value = type_of[current_key]
         
-    if type_of.value?("Fruit") == true
-      current_pair.slice
+    if current_value == "Fruit"
+      onlyfruits[current_key] = current_value
     end 
     
     counter += 1
