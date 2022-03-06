@@ -16,11 +16,12 @@ def select_fruit(type_of)
         
     if current_value == "Fruit"
       onlyfruits[current_key] = current_value
-    end 
+    end
     
     counter += 1
     break if counter == type_of.size
     end 
+  onlyfruits
 end 
 
 p select_fruit(produce)
