@@ -52,7 +52,7 @@ def player_places_piece!(brd)
   square = ''
   loop do
     puts "Choose a square (#{joinor(empty_square(brd))}):"
-    square = gets.chomp.to_i
+      square = gets.chomp.to_i
     break if empty_square(brd).include?(square)
     puts "Sorry, that's not a valid choice."
   end
@@ -60,13 +60,11 @@ def player_places_piece!(brd)
 end
 
 def find_at_risk_square(line, brd, marker)
-    if brd.values_at(*line).count(marker) == 2
-      
-       brd.select {|k,v| line.include?(k) && v == INITIAL_MARKER}.keys.first
-    
-    else 
-      nil
-    end
+  if brd.values_at(*line).count(marker) == 2
+    brd.select {|k,v| line.include?(k) && v == INITIAL_MARKER}.keys.first
+  else 
+    nil
+  end
 end 
 
 
@@ -76,7 +74,7 @@ def computer_places_piece!(brd)
   WINNING_LINES.each do |line|
     square = find_at_risk_square(line, brd, COMPUTER_MARKER)
     break if square
-  end
+  end 
   
   if !square
     WINNING_LINES.each do |line|
@@ -85,13 +83,16 @@ def computer_places_piece!(brd)
     end
   end
   
-  if  !square
+  if !square
     square = empty_square(brd).sample
   end
   
-  brd[square] = COMPUTER_MARKER
-end
-
+  if brd[5] == INITIAL_MARKER
+     brd[5] = COMPUTER_MARKER
+  else
+    brd[square] = COMPUTER_MARKER
+  end
+end 
 
 def board_full?(brd)
   empty_square(brd).empty?
@@ -112,18 +113,14 @@ def detect_winner(brd)
   nil
 end
 
-
-
 player = 0
 computer = 0
 loop do
   board = initalize_board
 
-
   loop do
     display_board(board)
 
-    
     player_places_piece!(board)
     break if someone_won?(board) || board_full?(board)
     
@@ -133,7 +130,6 @@ loop do
 
   display_board(board)
   
-
   if detect_winner(board) == "Player"
       player += 1
     else detect_winner(board) == "Computer"
