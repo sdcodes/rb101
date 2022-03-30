@@ -115,25 +115,48 @@ end
 
 player = 0
 computer = 0
+computer_chooses_first = [] 
 loop do
-  board = initalize_board
+  puts "Who should choose who goes first? (p for Player, c for Computer)"
+    who_chooses = gets.chomp
+    if who_chooses.downcase.start_with?("c")
+      who_goes_first = ["p", "c"].sample
+    else who_chooses.downcase.start_with?("p")
+      puts "Who's playing first (p for Player, c for Computer) "
+      who_goes_first = gets.chomp.downcase
+    end 
+    board = initalize_board
 
-  loop do
-    display_board(board)
-
-    player_places_piece!(board)
-    break if someone_won?(board) || board_full?(board)
+  if who_goes_first.downcase.start_with?("p") || computer_chooses_first == "p"
+    loop do
+      display_board(board)
+      player_places_piece!(board)
+      break if someone_won?(board) || board_full?(board)
+      
+      computer_places_piece!(board)
+      break if someone_won?(board) || board_full?(board)
+    end
+  end
     
-    computer_places_piece!(board)
-    break if someone_won?(board) || board_full?(board)
+  if who_goes_first.downcase.start_with?("c") || computer_chooses_first == "c"
+    square = empty_square(board).sample
+    board[square] = COMPUTER_MARKER
+    loop do 
+      display_board(board)
+      player_places_piece!(board)
+      break if someone_won?(board) || board_full?(board)
+      
+      computer_places_piece!(board)
+      break if someone_won?(board) || board_full?(board)
+    end
   end
 
   display_board(board)
   
   if detect_winner(board) == "Player"
-      player += 1
-    else detect_winner(board) == "Computer"
-      computer += 1
+    player += 1
+  else detect_winner(board) == "Computer"
+    computer += 1
   end 
   
   if someone_won?(board)
