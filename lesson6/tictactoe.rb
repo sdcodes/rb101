@@ -70,18 +70,30 @@ def detect_winner(brd)
   nil
 end
 
+def place_piece!(brd, current_player)
+  player_places_piece!(brd) if current_player == "Player"
+  computer_places_piece!(brd) if current_player == "Computer"
+end 
+
+def alternative_player(current_player)
+  if current_player == "Player"
+    "Computer"
+  else
+    "Player"
+  end 
+end 
+
+current_player = "Player"
 loop do
+  
   board = initalize_board
 
   loop do
     display_board(board)
-
-    player_places_piece!(board)
-    break if someone_won?(board) || board_full?(board)
-
-    computer_places_piece!(board)
-    break if someone_won?(board) || board_full?(board)
-  end
+  place_piece!(board, current_player)
+  current_player = alternative_player(current_player)
+  break if someone_won?(board) || board_full?(board)
+end
 
   display_board(board)
 
