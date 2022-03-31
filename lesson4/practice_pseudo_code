@@ -1,0 +1,60 @@
+#input: two nums
+#output: single num => sum of two nums provided
+#steps: 
+#define method sum_of with two parameter
+#argument1 * argument2
+#end 
+
+---- 
+
+#input: array (of strings)
+#string - all strings from array concatenated together
+#steps
+#define method and use of one parameter
+#iterate over array. each iteration to join the next. iteration method
+#must return new expression
+#strings added together
+#remove from array
+#end 
+
+---- 
+
+#input: array - of integers
+#new array - has every other integer of original array
+#steps:
+#define method: takes one parameter
+#iterate over array - return must be a new array 
+#when iterating, return num if num index is even
+#iteration method returns new array 
+#end 
+
+---- 
+
+#input: string
+#output: integer - index of 3rd occurance 
+#confirmation - does the method only take one parameter - the character or also the string?
+  #confirm we are not meant to also expect the string to be provided
+#example: 'axbxcdxex' - character 'x' - index 6 for 3rd occurance
+#define method(one paramter is assumed for now)
+#string is iterated over
+#confirm character appears at least 3 times
+#on third attempt, retrieve index #
+#have if statement should character not occur at least 3 times - nil
+#end 
+
+--- 
+#input: arrays 
+#output: single array
+#steps: 
+#metod define - w/ two parameters
+#set up new_array = []
+#
+
+  
+  
+  
+  
+
+
+
+

@@ -15,7 +15,21 @@ hsh.map do |_, values|
     end
   end 
 end 
-      
+
+#OTHER WAY
+
+
+new_array = []
+hsh.each_pair do |key, value|
+  if value[:type] == 'vegetable'
+   new_array << value[:size].upcase  
+  else value[:type] == 'fruit'
+   new_array << (value[:colors].map do |color|
+      color.capitalize
+    end)
+end
+end 
+   new_array   
       
 
 

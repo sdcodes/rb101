@@ -1,8 +1,4 @@
 arr = ['10', '11', '9', '7', '8']
-
-  arr.map.sort_by do |number|
-    number.to_i
-      
-  end 
-
-  
+arr.sort_by do |a, b|
+  b.to_i <=> a.to_i
+end 

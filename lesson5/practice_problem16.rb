@@ -20,7 +20,19 @@ def uuid
   final_uuid
 end 
 
+# ANOTHER WAY
 
+def uuid
+  alphanum = ['a', 'b', 'c', 'd', 'e', 'f', 
+               'g', 'h', 'i', 'j', 'k', 
+                'l', 'm', 'n', 'o', 'p', 'q', 
+                 'r', 's', 't', 'u', 'v', 'w', 
+                  'x', 'y', 'z', 9, 8, 7, 6, 5, 4, 3, 2, 1]
+  new_uuid = []
+  new_uuid << alphanum.sample(32)
+  new_uuid.join.insert(8, "-").insert(13, "-").insert(18, "-").insert(23, "-")
+end
+p uuid
 
   
 #insert (-). there has to be four of them at 8 4 4 4 12 interval 
