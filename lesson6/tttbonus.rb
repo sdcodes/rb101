@@ -165,8 +165,11 @@ loop do
 
   if detect_winner(board) == "Player"
     player += 1
-  else detect_winner(board) == "Computer"
+  elsif detect_winner(board) == "Computer"
     computer += 1
+  else
+    player
+    computer
   end
 
   if someone_won?(board)
