@@ -59,8 +59,14 @@ end
 def find_at_risk_square(line, brd, marker)
   if brd.values_at(*line).count(marker) == 2
     brd.select { |k, v| line.include?(k) && v == INITIAL_MARKER }.keys.first
+  end
+end
+
+def pick_5(brd, square)
+  if brd[5] == INITIAL_MARKER
+    brd[5] = COMPUTER_MARKER
   else
-    nil
+    brd[square] = COMPUTER_MARKER
   end
 end
 
@@ -83,11 +89,8 @@ def computer_places_piece!(brd)
     square = empty_square(brd).sample
   end
 
-  if brd[5] == INITIAL_MARKER
-    brd[5] = COMPUTER_MARKER
-  else
-    brd[square] = COMPUTER_MARKER
-  end
+  pick_5(brd, square)
+
 end
 
 def board_full?(brd)
@@ -122,20 +125,20 @@ def alternative_player(current_player)
   end
 end
 
+puts "Who chooses first player? (p for Player, c for Computer)"
+who_chooses = gets.chomp
+
+if who_chooses.downcase.start_with?("c")
+  who_goes_first = ["p", "c"].sample
+elsif who_chooses.downcase.start_with?("p")
+  puts "Who's playing first? (p for Player, c for Computer) "
+  who_goes_first = gets.chomp.downcase
+end
+
 player = 0
 computer = 0
 
-loop do
-  puts "Who chooses who goes first? (p for Player, c for Computer)"
-  who_chooses = gets.chomp
-
-  if who_chooses.downcase.start_with?("c")
-    who_goes_first = ["p", "c"].sample
-  else who_chooses.downcase.start_with?("p")
-    puts "Who's playing first? (p for Player, c for Computer) "
-    who_goes_first = gets.chomp.downcase
-  end
-
+loop do # main loop
   board = initalize_board
 
   if who_goes_first.downcase.start_with?("p")
@@ -168,8 +171,8 @@ loop do
   elsif detect_winner(board) == "Computer"
     computer += 1
   else
-    player
-    computer
+    player += 0 # prevents addition assignement due to a tie
+    computer += 0 # prevents addition assignment due to a tie
   end
 
   if someone_won?(board)
