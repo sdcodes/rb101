@@ -90,7 +90,6 @@ def computer_places_piece!(brd)
   end
 
   pick_5(brd, square)
-
 end
 
 def board_full?(brd)

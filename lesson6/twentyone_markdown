@@ -1,0 +1,46 @@
+there's 52 cards
+  4 suits [hearts, diamonts, club, spades]
+    13 values [2, 3, 4, 5, 6, 7, 8, 9, 10, jack, queen, king, ace]
+
+two players - player and dealer
+game starts with each player having 2 cards
+player can see his cards and one of dealer's
+how to win? player to get as close to 21 as possible, if over - loses
+in terms of value of cards: 2-10 => face value, j/q/k => 10, ace => 1 or 11
+
+---- 
+
+deal two cards to "player" and two cards to "dealer" (computer)
+show player his cards and one card of dealer
+give player option to 'hit' or 'stay' 
+if 'hit', player is given a new card from 52 (minus cards already dealt) deck
+  and given 'hit' or 'stay' option again
+if 'stay' - it is dealer's turn
+dealer hit until at least 17. then can decide to hit or stay
+ if 'stay', round is over and time to compare total value of cards. 
+ highest value wins
+ if either 'hit' and value over 21, a "bust" and it's a loses
+ 
+ --- 
+ 
+ 1. initialize deck
+ 2. deal cards to player and dealer
+ 3. player turn: hit or stay
+      - repeat until bust or "stay"
+ 4. if player bust, dealer wins.
+ 5. dealer turn: hit or stay
+      - repeat until total >= 17
+ 6. if dealer bust, player wins.
+ 7. compare cards and declare winner. 
+ 
+--- 
+
+1. ask 'hit' or 'stay'
+2. if 'stay', stop asking
+3. else, go to #1
+ 
+
+
+
+
+  
